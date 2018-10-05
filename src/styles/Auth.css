@@ -1,0 +1,60 @@
+body {
+	padding-top: 30px;
+}
+.auth {
+	background: #fff;
+	box-shadow: 10px 20px 20px #ccc;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.auth-header {
+	background: #8a1066;
+	padding: 15px;
+}
+.auth-header h1 {
+	text-align: center;
+	color: #fff;
+}
+form {
+	padding: 15px;
+}
+.input-group {
+	height: 44px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.input-group p {
+	float: left;
+	height: 44px;
+	width: 44px;
+	margin: 0;
+	background: #8a1066;
+	color: #fff;
+	font-size: 18px;
+	line-height: 44px;
+	text-align: center;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+.input-group input {
+	float: left;
+	text-indent: 15px;
+	height: 44px;
+	width: calc(100% - 44px);
+	border: 2px solid #8a1066;
+	border-left: none;
+	box-sizing: border-box;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+form button {
+	height: 44px;
+	background: #8a1066;
+	border-radius: 3px;
+	color: #fff;
+	border: none;
+	padding: 0 15px;
+}
+form button i {
+	margin-right: 15px;
+}
