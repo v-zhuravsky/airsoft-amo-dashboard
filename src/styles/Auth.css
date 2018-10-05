@@ -1,7 +1,5 @@
-body {
-	padding-top: 30px;
-}
 .auth {
+	margin-top: 30px;
 	background: #fff;
 	box-shadow: 10px 20px 20px #ccc;
 	border-radius: 3px;

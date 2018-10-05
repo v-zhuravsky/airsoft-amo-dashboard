@@ -13,3 +13,12 @@ h1, h2, h3, h4, h5, h6 {
 a, p, span {
 	font-family: 'Source Sans Pro', sans-serif;
 }
+.wrapper {
+	overflow: hidden;
+}
+.wrapper .content {
+	float: left;
+	height: 100vh;
+	overflow-y: scroll;
+	width: calc(100% - 100px);
+}

@@ -1,0 +1,27 @@
+.sidebar {
+	float: left;
+	width: 100px;
+	height: 100vh;
+	background: #8a1066;
+}
+.sidebar a {
+	display: block;
+	color: #fff;
+	padding: 15px 0;
+	text-align: center;
+	border-bottom: 1px solid #eee;
+	font-size: 16px;
+	transition: .3s background;
+}
+.sidebar a:last-child {
+	border-bottom: none;
+}
+.sidebar a i {
+	display: block;
+	margin-bottom: 10px;
+	font-size: 26px;
+}
+.sidebar a:hover {
+	text-decoration: none;
+	background: #721155;
+}
