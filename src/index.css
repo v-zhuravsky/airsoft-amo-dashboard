@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa:700|Source+Sans+Pro');
+:focus {
+	outline: none;
+}
+body {
+	background: #eee;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-family: 'Comfortaa', cursive;
+	font-weight: 700;
+}
+a, p, span {
+	font-family: 'Source Sans Pro', sans-serif;
+}
