@@ -1,0 +1,49 @@
+.flash-messages.mt-0 {
+	margin-top: 0;
+}
+.flash-messages {
+	margin: 0 0 30px;
+}
+.flash-message {
+	padding: 15px;
+	border-radius: 2px;
+	overflow: hidden;
+	margin-bottom: 15px;
+}
+.flash-message:last-child {
+	margin-bottom: 0;
+}
+.flash-message.normal {
+	background: #2ecc71;
+}
+.flash-message.error {
+	background: #e74c3c;
+}
+.flash-message p {
+	color: #fff;
+	font-size: 16px;
+	line-height: 1.5em;
+	float: left;
+	margin: 0;
+	max-width: calc(100% - 49px);
+}
+.flash-message button {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	float: right;
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	border: none;
+}
+.flash-message button:focus {
+	outline: none;
+}
+.flash-message button i {
+	margin-right: 0;
+	color: #7f8c8d;
+}
+.flash-message button:hover i {
+	color: #fff;
+}
