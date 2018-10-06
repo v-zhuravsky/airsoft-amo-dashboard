@@ -41,7 +41,7 @@ class AddProduct extends Component {
 				<Sidebar />
 				<Content>
 					<div className="page-header block">
-						<h1>Products</h1>
+						<h1>Add new product</h1>
 					</div>
 					<form className="block form" onSubmit={this.handleSubmit}>
 						<input
