@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Breadcrumbs from './Breadcrumbs';
+import ContainerFluid from './ContainerFluid';
 import Row from './Row';
-import ProductCard from './ProductCard';
+import ProductItem from './ProductItem';
 
 import '../styles/Products.css';
 
@@ -79,14 +79,9 @@ class Products extends Component {
 		}
 
 		return (
-			<div className="col-md-9">
+			<ContainerFluid>
 				<Row>
 					<div className="col-md-12">
-						<Breadcrumbs location={this.props.location} />
-					</div>
-				</Row>
-				<Row>
-					<div className="col-md-12 sort-row">
 						<div className="sort">
 							<h3>Sort</h3>
 							<select value={this.state.sortType} onChange={this.handleChange}>
@@ -99,13 +94,17 @@ class Products extends Component {
 					</div>
 				</Row>
 				<Row>
-					{
-						products.map(product => (
-							<ProductCard key={product.productId} product={product} />
-						))
-					}
+					<div className="col-md-12">
+						<div className="items">
+							{
+								products.map(product => (
+									<ProductItem key={product.productId} product={product} />
+								))
+							}
+						</div>
+					</div>
 				</Row>
-			</div>
+			</ContainerFluid>
 		);
 	}
 }

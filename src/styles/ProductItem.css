@@ -1,0 +1,51 @@
+.item {
+	overflow: hidden;
+	height: 54px;
+	border-bottom: 1px solid #eee;
+	padding: 0 10px;
+}
+.item:last-child {
+	border-bottom: none;
+}
+.item > * {
+	float: left;
+}
+.item a,
+.item p {
+	line-height: 54px;
+	margin: 0;
+	font-size: 16px;
+}
+.item a {
+	margin-right: 10px;
+}
+.item p {
+	display: inline-block;
+	padding: 0 5px;
+	height: 34px;
+	margin: 10px 0;
+	background: #2ecc71;
+	border-radius: 3px;
+	color: #fff;
+	line-height: 34px;
+	float: right;
+	margin-right: 10px;
+}
+.item .rating {
+	float: right;
+	margin: 16px 15px 0;
+}
+.item button {
+	float: right;
+	height: 34px;
+	margin: 10px 0 10px 10px;
+	background: #e74c3c;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	padding: 0 15px;
+	line-height: 34px;
+}
+.item button i {
+	margin-right: 15px;
+}

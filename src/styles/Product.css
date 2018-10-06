@@ -1,0 +1,27 @@
+.details {
+	overflow: hidden;
+	height: 44px;
+}
+.details h2 {
+	float: left;
+	margin-right: 15px;
+	line-height: 44px;
+}
+.details span.price {
+	font-family: 'Comfortaa', cursive;
+	font-weight: 700;
+	display: inline-block;
+	padding: 0 10px;
+	height: 44px;
+	font-size: 18px;
+	line-height: 44px;
+	border-radius: 3px;
+	background: #8a1066;
+	color: #fff;
+	float: left;
+}
+.description {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.5em;
+}

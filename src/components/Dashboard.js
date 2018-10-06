@@ -1,17 +1,33 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import Icon from './Icon';
 import Sidebar from './Sidebar';
-import Content from './Content.js';
+import Content from './Content';
+import Products from './Products';
 
-const Dashboard = () => {
+import '../styles/Dashboard.css';
+
+const Dashboard = ({ products }) => {
 	return (
 		<div className="wrapper">
 			<Sidebar />
 			<Content>
-				<h1>Dashboard</h1>
+				<div className="page-header block">
+					<h1>Products</h1>
+					<Link to="/add-product"><Icon name="plus" />Add product</Link>
+				</div>
+				<Products products={products} />
 			</Content>
 		</div>
 	);
 };
 
-export default Dashboard;
+const mapStateToProps = state => {
+	return {
+		products: state.products
+	};
+};
+
+export default connect(mapStateToProps)(Dashboard);
