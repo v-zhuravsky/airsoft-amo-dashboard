@@ -8,7 +8,7 @@ import '../styles/Sidebar.css';
 const Sidebar = () => {
 	return (
 		<div className="sidebar">
-			<NavLink to="/"><Icon name="th-large" />Warehouse</NavLink>
+			<NavLink exact to="/"><Icon name="th-large" />Warehouse</NavLink>
 			<NavLink to="/customers"><Icon name="users" />Customers</NavLink>
 			<NavLink to="/stats"><Icon name="area-chart" />Stats</NavLink>
 		</div>
