@@ -21,7 +21,8 @@
 	margin-bottom: 10px;
 	font-size: 26px;
 }
-.sidebar a:hover {
+.sidebar a:hover,
+.sidebar a.active {
 	text-decoration: none;
 	background: #721155;
 }
