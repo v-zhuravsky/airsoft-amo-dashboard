@@ -15,7 +15,7 @@ const Dashboard = ({ products }) => {
 			<Sidebar />
 			<Content>
 				<div className="page-header block">
-					<h1>Products</h1>
+					<h2>Products</h2>
 					<Link to="/add-product"><Icon name="plus" />Add product</Link>
 				</div>
 				<Products products={products} />

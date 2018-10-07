@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: 'Comfortaa', cursive;
 	font-weight: 700;
 }
-a, p, span {
+a, p, span, button {
 	font-family: 'Source Sans Pro', sans-serif;
 }
 .wrapper {

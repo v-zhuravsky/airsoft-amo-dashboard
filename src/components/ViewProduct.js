@@ -14,7 +14,7 @@ const ViewProduct = ({ product }) => {
 			<Content>
 				<div className="page-header block">
 					<Link to={"/update-product/" + product.productId}><Icon name="pencil-square-o" />Update product</Link>
-					<button><Icon name="trash-o" />Delete product</button>
+					<button className="danger"><Icon name="trash-o" />Delete product</button>
 				</div>
 				<Product product={product} />
 			</Content>
