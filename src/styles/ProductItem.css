@@ -45,6 +45,10 @@
 	border-radius: 3px;
 	padding: 0 15px;
 	line-height: 34px;
+	transition: .2s all;
+}
+.item button:hover {
+	background: #c0392b;
 }
 .item button i {
 	margin-right: 15px;
