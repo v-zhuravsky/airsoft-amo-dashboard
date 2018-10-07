@@ -7,9 +7,9 @@ import Img from './Img';
 
 import '../styles/Sidebar.css';
 
-const Sidebar = ({ admin }) => {
+const Sidebar = ({ admin, left }) => {
 	return (
-		<div className="sidebar">
+		<div style={{ left }} className="sidebar">
 			<div className="sidebar-header">
 				<h2>AirsoftAmo</h2>
 			</div>
@@ -34,7 +34,8 @@ const Sidebar = ({ admin }) => {
 
 const mapStateToProps = state => {
 	return {
-		admin: state.admin
+		admin: state.admin,
+		left: state.ui.sidebarLeft
 	};
 };
 

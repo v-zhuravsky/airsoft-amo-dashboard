@@ -6,6 +6,7 @@ import Icon from './Icon';
 import Sidebar from './Sidebar';
 import Content from './Content';
 import Products from './Products';
+import ToggleSidebar from './ToggleSidebar';
 
 import '../styles/Dashboard.css';
 
@@ -15,6 +16,7 @@ const Dashboard = ({ products }) => {
 			<Sidebar />
 			<Content>
 				<div className="page-header block">
+					<ToggleSidebar />
 					<h2>Products</h2>
 					<Link to="/add-product"><Icon name="plus" />Add product</Link>
 				</div>

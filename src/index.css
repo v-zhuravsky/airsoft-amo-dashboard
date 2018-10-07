@@ -15,4 +15,5 @@ a, p, span, button {
 }
 .wrapper {
 	overflow: hidden;
+	position: relative;
 }

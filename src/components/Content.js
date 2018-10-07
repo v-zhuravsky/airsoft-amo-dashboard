@@ -1,13 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import '../styles/Content.css';
 
-const Content = ({ children }) => {
+const Content = ({ children, width }) => {
 	return (
-		<div className="content">
+		<div style={{ width }} className="content">
 			{ children }
 		</div>
 	);
 };
 
-export default Content;
+const mapStateToProps = state => {
+	return {
+		width: state.ui.contentWidth
+	};
+};
+
+export default connect(mapStateToProps)(Content);
