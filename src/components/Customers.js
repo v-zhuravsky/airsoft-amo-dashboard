@@ -2,13 +2,17 @@ import React from 'react';
 
 import Sidebar from './Sidebar';
 import Content from './Content.js';
+import ToggleSidebar from './ToggleSidebar';
 
 const Customers = () => {
 	return (
 		<div className="wrapper">
 			<Sidebar />
 			<Content>
-				<h1>Customers</h1>
+				<div className="page-header block">
+					<ToggleSidebar />
+					<h2>Customers</h2>
+				</div>
 			</Content>
 		</div>
 	);

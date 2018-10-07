@@ -8,6 +8,7 @@ import ViewProduct from './components/ViewProduct';
 import Customers from './components/Customers';
 import Stats from './components/Stats';
 import Auth from './components/Auth';
+import NotFound from './components/NotFound';
 
 const App = () => {
 	return (
@@ -19,6 +20,7 @@ const App = () => {
 				<PrivateRoute exact path="/view-product/:id" component={ViewProduct} />
 				<PrivateRoute path="/customers" component={Customers} />
 				<PrivateRoute path="/stats" component={Stats} />
+				<PrivateRoute component={NotFound} />
 			</Switch>
 		</div>
 	);

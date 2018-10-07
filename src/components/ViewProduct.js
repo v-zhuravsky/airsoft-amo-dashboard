@@ -6,6 +6,7 @@ import Sidebar from './Sidebar';
 import Content from './Content';
 import Product from './Product';
 import Icon from './Icon';
+import ToggleSidebar from './ToggleSidebar';
 
 const ViewProduct = ({ product }) => {
 	return (
@@ -13,6 +14,7 @@ const ViewProduct = ({ product }) => {
 			<Sidebar />
 			<Content>
 				<div className="page-header block">
+					<ToggleSidebar />
 					<Link to={"/update-product/" + product.productId}><Icon name="pencil-square-o" />Update product</Link>
 					<button className="danger"><Icon name="trash-o" />Delete product</button>
 				</div>

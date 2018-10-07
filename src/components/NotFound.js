@@ -1,15 +1,25 @@
 import React from 'react';
-import Icon from './Icon';
-import '../styles/NotFound.css';
 
-const NotFound = () => (
-	<div className="col-md-9">
-		<div className="not-found">
-			<Icon name="frown-o" />
-			<h1>404</h1>
-			<h2>The page you're looking for not found.</h2>
+import Sidebar from './Sidebar';
+import Content from './Content.js';
+import ToggleSidebar from './ToggleSidebar';
+import Icon from './Icon';
+
+const NotFound = () => {
+	return (
+		<div className="wrapper">
+			<Sidebar />
+			<Content>
+				<div className="page-header block">
+					<ToggleSidebar />
+					<h2>Not found</h2>
+				</div>
+				<div className="block">
+					<h1>The page you are looking for not found. 404</h1>
+				</div>
+			</Content>
 		</div>
-	</div>
-);
+	);
+};
 
 export default NotFound;

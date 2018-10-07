@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Sidebar from './Sidebar';
 import Content from './Content';
 import Icon from './Icon';
+import ToggleSidebar from './ToggleSidebar';
 
 import '../styles/AddProduct.css';
 
@@ -41,6 +42,7 @@ class AddProduct extends Component {
 				<Sidebar />
 				<Content>
 					<div className="page-header block">
+						<ToggleSidebar />
 						<h2>Add new product</h2>
 					</div>
 					<form className="block form" onSubmit={this.handleSubmit}>
