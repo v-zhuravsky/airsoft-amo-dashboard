@@ -4,6 +4,7 @@
 	height: 100vh;
 	overflow-y: scroll;
 	width: calc(100% - 250px);
+	transition: .5s width;
 }
 .content .block {
 	padding: 15px;
