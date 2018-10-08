@@ -8,8 +8,6 @@ import Content from './Content';
 import Products from './Products';
 import ToggleSidebar from './ToggleSidebar';
 
-import '../styles/Dashboard.css';
-
 const Dashboard = ({ products }) => {
 	return (
 		<div className="wrapper">
