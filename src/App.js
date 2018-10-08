@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
+import Admins from './components/Admins';
 import AddProduct from './components/AddProduct';
 import ViewProduct from './components/ViewProduct';
 import Customers from './components/Customers';
@@ -16,8 +17,9 @@ const App = () => {
 			<Switch>
 				<Route path="/login" component={Auth} />
 				<PrivateRoute exact path="/" component={Dashboard} />
-				<PrivateRoute exact path="/add-product" component={AddProduct} />
-				<PrivateRoute exact path="/view-product/:id" component={ViewProduct} />
+				<PrivateRoute path="/admins" component={Admins} />
+				<PrivateRoute path="/add-product" component={AddProduct} />
+				<PrivateRoute path="/view-product/:id" component={ViewProduct} />
 				<PrivateRoute path="/customers" component={Customers} />
 				<PrivateRoute path="/stats" component={Stats} />
 				<PrivateRoute component={NotFound} />

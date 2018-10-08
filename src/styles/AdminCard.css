@@ -1,0 +1,23 @@
+.admin-card {
+	padding: 0 15px 15px;
+	background: #fff;
+	box-shadow: 10px 20px 20px #ccc;
+	margin-bottom: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+.admin-card img {
+	margin-top: 15px;
+	display: block;
+	margin: 0 auto 15px;
+}
+.admin-card h2,
+.admin-card p {
+	text-align: center;
+}
+.admin-card h2 i {
+	margin-right: 15px;
+}
+.admin-card p {
+	margin: 10px 0 0;
+}
