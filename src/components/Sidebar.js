@@ -24,6 +24,7 @@ const Sidebar = ({ admin, left }) => {
 				</div>
 			</div>
 			<NavLink exact to="/"><Icon name="th-large" />Warehouse</NavLink>
+			<NavLink exact to="/admins"><Icon name="id-badge" />Admins</NavLink>
 			<NavLink to="/customers"><Icon name="users" />Customers</NavLink>
 			<NavLink to="/stats"><Icon name="area-chart" />Stats</NavLink>
 			<NavLink to="/settings"><Icon name="cog" />Settings</NavLink>
