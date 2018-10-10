@@ -7,6 +7,7 @@ import ToggleSidebar from './ToggleSidebar';
 import ContainerFluid from './ContainerFluid';
 import Row from './Row';
 import AdminCard from './AdminCard';
+import FlashMessagesList from './FlashMessagesList';
 
 const Admins = ({ admins, currentAdminId }) => {
 	return (
@@ -17,6 +18,7 @@ const Admins = ({ admins, currentAdminId }) => {
 					<ToggleSidebar />
 					<h2>Admins</h2>
 				</div>
+				<FlashMessagesList />
 				{
 					admins.map(admin => <AdminCard admin={admin} currentAdminId={currentAdminId} key={admin.id} />)
 				}

@@ -5,6 +5,7 @@ import Sidebar from './Sidebar';
 import Content from './Content';
 import Icon from './Icon';
 import ToggleSidebar from './ToggleSidebar';
+import FlashMessagesList from './FlashMessagesList';
 
 import '../styles/AddProduct.css';
 
@@ -45,6 +46,7 @@ class AddProduct extends Component {
 						<ToggleSidebar />
 						<h2>Add new product</h2>
 					</div>
+					<FlashMessagesList />
 					<form className="block form" onSubmit={this.handleSubmit}>
 						<input
 							type="text"

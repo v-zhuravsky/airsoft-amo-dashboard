@@ -3,6 +3,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Content from './Content.js';
 import ToggleSidebar from './ToggleSidebar';
+import FlashMessagesList from './FlashMessagesList';
 
 const Customers = () => {
 	return (
@@ -13,6 +14,7 @@ const Customers = () => {
 					<ToggleSidebar />
 					<h2>Customers</h2>
 				</div>
+				<FlashMessagesList />
 			</Content>
 		</div>
 	);

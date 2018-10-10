@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
 import Content from './Content';
+import FlashMessagesList from './FlashMessagesList';
 import Product from './Product';
 import Icon from './Icon';
 import ToggleSidebar from './ToggleSidebar';
@@ -18,6 +19,7 @@ const ViewProduct = ({ product }) => {
 					<Link to={"/update-product/" + product.productId}><Icon name="pencil-square-o" />Update product</Link>
 					<button className="danger"><Icon name="trash-o" />Delete product</button>
 				</div>
+				<FlashMessagesList />
 				<Product product={product} />
 			</Content>
 		</div>

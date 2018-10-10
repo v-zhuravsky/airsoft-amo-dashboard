@@ -4,6 +4,7 @@ import { changeAdminType } from '../actions/adminsActions';
 
 import Sidebar from './Sidebar';
 import Content from './Content';
+import FlashMessagesList from './FlashMessagesList';
 import ToggleSidebar from './ToggleSidebar';
 import ContainerFluid from './ContainerFluid';
 import Row from './Row';
@@ -34,6 +35,7 @@ class Admin extends Component {
 						<ToggleSidebar />
 						<h2>{admin.firstName} {admin.lastName} {currentAdminId === admin.id && "| You"}</h2>
 					</div>
+					<FlashMessagesList />
 					<ContainerFluid>
 						<Row>
 							<div className="col-md-4 pr-0">
