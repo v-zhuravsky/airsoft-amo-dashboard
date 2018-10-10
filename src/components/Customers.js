@@ -1,11 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Sidebar from './Sidebar';
 import Content from './Content.js';
 import ToggleSidebar from './ToggleSidebar';
 import FlashMessagesList from './FlashMessagesList';
+import OrdersList from './OrdersList';
 
-const Customers = () => {
+const Customers = ({ orders }) => {
 	return (
 		<div className="wrapper">
 			<Sidebar />
@@ -15,9 +17,16 @@ const Customers = () => {
 					<h2>Customers</h2>
 				</div>
 				<FlashMessagesList />
+				<OrdersList orders={orders.reverse()} />
 			</Content>
 		</div>
 	);
 };
 
-export default Customers;
+const mapStateToProps = state => {
+	return {
+		orders: state.orders.orders
+	};
+};
+
+export default connect(mapStateToProps)(Customers);
