@@ -1,0 +1,41 @@
+.admin-block {
+	overflow: hidden;
+}
+.admin-short-info {
+	height: 70px;
+	overflow: hidden;
+}
+.admin-short-info img {
+	height: 70px;
+	width: 70px;
+	float: left;
+}
+.admin-short-info h3 {
+	float: left;
+	margin-left: 15px;
+	line-height: 70px;
+}
+.admin-stats p {
+	margin: 15px 0 0;
+	font-size: 16px;
+}
+.admin-stats p i {
+	margin-right: 15px;
+}
+.change-type {
+	height: 74px;
+}
+.change-type select {
+	height: 44px;
+	width: 100%;
+	border: 1px solid #ccc;
+	text-indent: 15px;
+	border-radius: 3px;
+	background: #fff;
+}
+.activity-chart {
+	overflow-y: scroll;
+}
+.activity-chart h2 {
+	margin-bottom: 15px;
+}
