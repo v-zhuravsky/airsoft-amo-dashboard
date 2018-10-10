@@ -1,5 +1,5 @@
 .admin-card {
-	padding: 0 15px 15px;
+	padding: 15px;
 	background: #fff;
 	box-shadow: 10px 20px 20px #ccc;
 	margin-bottom: 15px;
@@ -7,7 +7,6 @@
 	border-radius: 3px;
 }
 .admin-card img {
-	margin-top: 15px;
 	display: block;
 	margin: 0 auto 15px;
 }
@@ -15,9 +14,26 @@
 .admin-card p {
 	text-align: center;
 }
-.admin-card h2 i {
+.admin-card h2 a {
+	color: #333;
+}
+.admin-card h2 a:hover {
+	text-decoration: none;
+	color: #2c3e50;
+}
+.admin-card h2 a i {
 	margin-right: 15px;
 }
 .admin-card p {
 	margin: 10px 0 0;
+	font-size: 16px;
+	padding: 5px 15px;
+	border-radius: 3px;
+	color: #fff;
+}
+.admin-card p.you {
+	background: #2ecc71;
+}
+.admin-card p.admin {
+	background: #2c3e50;
 }
