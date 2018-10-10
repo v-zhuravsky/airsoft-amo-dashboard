@@ -8,7 +8,7 @@ import ContainerFluid from './ContainerFluid';
 import Row from './Row';
 import AdminCard from './AdminCard';
 
-const Admins = ({ admins }) => {
+const Admins = ({ admins, currentAdminId }) => {
 	return (
 		<div className="wrapper">
 			<Sidebar />
@@ -18,7 +18,7 @@ const Admins = ({ admins }) => {
 					<h2>Admins</h2>
 				</div>
 				{
-					admins.map(admin => <AdminCard admin={admin} key={admin.id} />)
+					admins.map(admin => <AdminCard admin={admin} currentAdminId={currentAdminId} key={admin.id} />)
 				}
 			</Content>
 		</div>
@@ -27,7 +27,8 @@ const Admins = ({ admins }) => {
 
 const mapStateToProps = state => {
 	return {
-		admins: state.admins
+		admins: state.admins,
+		currentAdminId: state.admin.id
 	};
 };
 
