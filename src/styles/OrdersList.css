@@ -1,0 +1,44 @@
+.list {
+	padding: 0 !important;
+	border-radius: 3px;
+}
+.order-list-item {
+	padding: 10px;
+	height: 54px;
+	overflow: hidden;
+	border-bottom: 1px solid #ccc;
+}
+.order-list-item:last-child {
+	border-bottom: none;
+}
+.order-list-item a {
+	float: left;
+	width: calc(100% - 103px);
+	height: 34px;
+	display: block;
+	line-height: 34px;
+	font-size: 16px;
+}
+.order-list-item a i {
+	margin: 0 10px;
+}
+.order-list-item .order-item-controls {
+	width: 78px;
+	float: right;
+}
+.order-list-item .order-item-controls button {
+	float: left;
+	height: 34px;
+	width: 34px;
+	border: none;
+	color: #fff;
+	margin: 0;
+	border-radius: 3px;
+}
+.order-list-item .order-item-controls button.complete {
+	margin-right: 10px;
+	background: #2ecc71;
+}
+.order-list-item .order-item-controls button.cancel {
+	background: #e74c3c;
+}
