@@ -1,3 +1,5 @@
+import { CHANGE_ADMIN_TYPE } from '../actions/types';
+
 const initialState = [
 	{
 		id: 1,
@@ -65,7 +67,21 @@ const initialState = [
 ];
 
 const adminsReducer = (state = initialState, action) => {
-	return state;
+	switch (action.type) {
+		case CHANGE_ADMIN_TYPE:
+			return state.map(admin => {
+				if (admin.id === action.payload.id) {
+					return {
+						...admin,
+						type: action.payload.newType
+					};
+				} else {
+					return admin;
+				}
+			});
+		default:
+			return state;
+	}
 };
 
 export default adminsReducer;
