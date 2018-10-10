@@ -1,0 +1,7 @@
+.orders-stats {
+	overflow-x: scroll;
+	margin: 0 15px;
+}
+.orders-stats h2 {
+	margin-bottom: 15px;
+}
