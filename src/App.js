@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard';
 import Admins from './components/Admins';
 import Admin from './components/Admin';
 import AddProduct from './components/AddProduct';
+import UpdateProduct from './components/UpdateProduct';
 import ViewProduct from './components/ViewProduct';
 import Customers from './components/Customers';
 import Order from './components/Order';
@@ -22,6 +23,7 @@ const App = () => {
 				<PrivateRoute path="/admins" component={Admins} />
 				<PrivateRoute path="/admin/:id" component={Admin} />
 				<PrivateRoute path="/add-product" component={AddProduct} />
+				<PrivateRoute path="/update-product/:id" component={UpdateProduct} />
 				<PrivateRoute path="/view-product/:id" component={ViewProduct} />
 				<PrivateRoute path="/customers" component={Customers} />
 				<PrivateRoute path="/order/:id" component={Order} />
