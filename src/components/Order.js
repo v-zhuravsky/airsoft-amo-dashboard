@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
 import Content from './Content';
@@ -8,7 +7,6 @@ import ContainerFluid from './ContainerFluid';
 import Row from './Row';
 import FlashMessagesList from './FlashMessagesList';
 import Products from './Products';
-import Icon from './Icon';
 import ToggleSidebar from './ToggleSidebar';
 
 import '../styles/Order.css';

@@ -3,7 +3,6 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Content from './Content.js';
 import ToggleSidebar from './ToggleSidebar';
-import Icon from './Icon';
 
 const NotFound = () => {
 	return (
