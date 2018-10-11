@@ -13,14 +13,14 @@
 .form button {
 	height: 44px;
 	border-radius: 3px;
-	background: #8a1066;
+	background: #2c3e50;
 	color: #fff;
 	padding: 0 15px;
 	transition: .3s background;
 	color: #fff;
 }
 .form button:hover {
-	background: #721155;
+	background: #34495e;
 }
 .form button i {
 	margin-right: 15px;
