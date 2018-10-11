@@ -5,7 +5,7 @@ import '../styles/Content.css';
 
 const Content = ({ children, width }) => {
 	return (
-		<div style={{ width }} className="content">
+		<div style={{ width }} className={width === "100%" ? "content full" : "content"}>
 			{ children }
 		</div>
 	);

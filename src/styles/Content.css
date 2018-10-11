@@ -5,6 +5,7 @@
 	overflow-y: scroll;
 	width: calc(100% - 250px);
 	transition: .5s width;
+	padding-top: 85px;
 }
 .content .block {
 	padding: 15px;
@@ -13,10 +14,20 @@
 	margin-bottom: 15px;
 }
 .content .page-header {
+	position: fixed;
+	top: 0;
+	left: 250px;
+	right: 0;
 	padding: 0 15px;
 	overflow: hidden;
 	height: 70px;
 	background: #2c3e50;
+	z-index: 999;
+	box-shadow: none;
+	transition: .5s left;
+}
+.content.full .page-header {
+	left: 0;
 }
 .content .page-header h2 {
 	float: left;
