@@ -17,7 +17,7 @@ const Customers = ({ orders }) => {
 					<h2>Customers</h2>
 				</div>
 				<FlashMessagesList />
-				<OrdersList orders={orders.reverse()} />
+				<OrdersList orders={orders} />
 			</Content>
 		</div>
 	);
