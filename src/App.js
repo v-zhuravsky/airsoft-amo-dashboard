@@ -12,6 +12,7 @@ import Customers from './components/Customers';
 import Order from './components/Order';
 import Stats from './components/Stats';
 import Auth from './components/Auth';
+import Settings from './components/Settings';
 import NotFound from './components/NotFound';
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
 				<PrivateRoute path="/view-product/:id" component={ViewProduct} />
 				<PrivateRoute path="/customers" component={Customers} />
 				<PrivateRoute path="/order/:id" component={Order} />
+				<PrivateRoute path="/settings" component={Settings} />
 				<PrivateRoute path="/stats" component={Stats} />
 				<PrivateRoute component={NotFound} />
 			</Switch>
