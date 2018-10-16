@@ -5,6 +5,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Dashboard from './components/Dashboard';
 import Admins from './components/Admins';
 import Admin from './components/Admin';
+import AddAdmin from './components/AddAdmin';
 import AddProduct from './components/AddProduct';
 import UpdateProduct from './components/UpdateProduct';
 import ViewProduct from './components/ViewProduct';
@@ -23,6 +24,7 @@ const App = () => {
 				<PrivateRoute exact path="/" component={Dashboard} />
 				<PrivateRoute path="/admins" component={Admins} />
 				<PrivateRoute path="/admin/:id" component={Admin} />
+				<PrivateRoute path="/add-admin" component={AddAdmin} />
 				<PrivateRoute path="/add-product" component={AddProduct} />
 				<PrivateRoute path="/update-product/:id" component={UpdateProduct} />
 				<PrivateRoute path="/view-product/:id" component={ViewProduct} />
