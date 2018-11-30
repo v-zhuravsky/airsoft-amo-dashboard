@@ -12,7 +12,6 @@ import ToggleSidebar from './ToggleSidebar';
 import '../styles/Order.css';
 
 const Order = ({ order, products }) => {
-	console.log(products);
 	const orderSum = order.products.reduce((current, next) => {
 		return (current.amount * Number(current.productPrice)) + (next.amount * Number(next.productPrice));
 	});
