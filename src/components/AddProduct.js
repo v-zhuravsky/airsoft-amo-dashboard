@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import useInput from '../hooks/useInput';
 
 import Sidebar from './Sidebar';
 import Content from './Content';
@@ -9,87 +9,63 @@ import FlashMessagesList from './FlashMessagesList';
 
 import '../styles/AddProduct.css';
 
-class AddProduct extends Component {
-	state = {
-		productName: '',
-		category: '',
-		productPrice: '',
-		productDescription: '',
-		amountLeft: '',
-		imgUrl: ''
-	}
+const AddProduct = () => {
+	const productName = useInput('');
+	const category = useInput('');
+	const productPrice = useInput('');
+	const productDescription = useInput('');
+	const amountLeft = useInput('');
+	const imgUrl = useInput('');
 
-	handleChange = e => {
-		this.setState({ [e.target.name]: e.target.value });
-	}
-
-	handleSubmit = e => {
+	const handleSubmit = e => {
 		e.preventDefault();
-		const {
-			productName,
-			category,
-			productPrice,
-			productDescription,
-			amountLeft,
-			imgUrl
-		} = this.state;
-		
-		alert(productName + '\n' + category + '\n' + productPrice + '\n' + productDescription + '\n' + amountLeft + '\n' + imgUrl);
-	}
+	};
 
-	render() {
-		return (
-			<div className="wrapper">
-				<Sidebar />
-				<Content>
-					<div className="page-header block">
-						<ToggleSidebar />
-						<h2>Add new product</h2>
-					</div>
-					<FlashMessagesList />
-					<form className="block form" onSubmit={this.handleSubmit}>
-						<input
-							type="text"
-							name="productName"
-							placeholder="Product name"
-							onChange={this.handleChange}
-							required />
-						<input
-							type="text"
-							name="category"
-							placeholder="Category"
-							onChange={this.handleChange}
-							required />
-						<input
-							type="number"
-							name="productPrice"
-							placeholder="Price"
-							onChange={this.handleChange}
-							required />
-						<input
-							type="text"
-							name="productDescription"
-							placeholder="Description"
-							onChange={this.handleChange}
-							required />
-						<input
-							type="number"
-							name="amountLeft"
-							placeholder="Amount at warehouse"
-							onChange={this.handleChange}
-							required />
-						<input
-							type="text"
-							name="imgUrl"
-							placeholder="Url to product photo"
-							onChange={this.handleChange}
-							required />
-						<button type="submit"><Icon name="plus" />Add product</button>
-					</form>
-				</Content>
-			</div>
-		);
-	}
-}
+	return (
+		<div className="wrapper">
+			<Sidebar />
+			<Content>
+				<div className="page-header block">
+					<ToggleSidebar />
+					<h2>Add new product</h2>
+				</div>
+				<FlashMessagesList />
+				<form className="block form" onSubmit={handleSubmit}>
+					<input
+						type="text"
+						{...productName}
+						placeholder="Product name"
+						required />
+					<input
+						type="text"
+						{...category}
+						placeholder="Category"
+						required />
+					<input
+						type="number"
+						{...productPrice}
+						placeholder="Price"
+						required />
+					<input
+						type="text"
+						{...productDescription}
+						placeholder="Description"
+						required />
+					<input
+						type="number"
+						{...amountLeft}
+						placeholder="Amount at warehouse"
+						required />
+					<input
+						type="text"
+						{...imgUrl}
+						placeholder="Url to product photo"
+						required />
+					<button type="submit"><Icon name="plus" />Add product</button>
+				</form>
+			</Content>
+		</div>
+	);
+};
 
-export default connect(null)(AddProduct);
+export default AddProduct;
