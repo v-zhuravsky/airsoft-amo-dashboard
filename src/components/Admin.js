@@ -22,6 +22,8 @@ const Admin = ({ admin, currentAdminId, changeAdminType }) => {
 		changeAdminType(admin.id, e.target.value, currentAdminId);
 	};
 
+	console.log(admin);
+
 	return (
 		<div className="wrapper">
 			<Sidebar />
@@ -43,9 +45,9 @@ const Admin = ({ admin, currentAdminId, changeAdminType }) => {
 									<h3>{admin.firstName} {admin.lastName}</h3>
 								</div>
 								<div className="admin-stats">
-									<p><Icon name="check" />Completed orders: 243</p>
-									<p><Icon name="times" />Canceled orders: 13</p>
-									<p><Icon name="calendar" />Works since: 21/10/2018</p>
+									<p><Icon name="check" />Completed orders: {admin.completedOrders}</p>
+									<p><Icon name="times" />Canceled orders: {admin.canceledOrders}</p>
+									<p><Icon name="calendar" />Works since: {admin.worksSince}</p>
 								</div>
 							</div>
 							<div className="block change-type">
