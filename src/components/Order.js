@@ -12,9 +12,10 @@ import ToggleSidebar from './ToggleSidebar';
 import '../styles/Order.css';
 
 const Order = ({ order, products }) => {
-	const orderSum = order.products.reduce((current, next) => {
+	const orderSum = products.reduce((current, next) => {
 		return (current.amount * Number(current.productPrice)) + (next.amount * Number(next.productPrice));
 	});
+	console.log(orderSum);
 
 	return (
 		<div className="wrapper">
@@ -54,7 +55,10 @@ const mapStateToProps = (state, ownProps) => {
 	order.products.forEach(product => {
 		for (var i = 0; i < state.products.length; i++) {
 			if (product.productId === state.products[i].productId) {
-				products.push(state.products.filter(pr => pr.productId === product.productId)[0]);
+				products.push({
+					...state.products.filter(pr => pr.productId === product.productId)[0],
+					amount: product.amount
+				});
 			}
 		}
 	});
