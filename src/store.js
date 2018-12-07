@@ -1,12 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers/rootReducer';
+import storeName from './storeName'
 
 let initialState = {};
 
-// if (localStorage['redux-dashboard']) {
-// 	initialState = JSON.parse(localStorage['redux-dashboard']);
-// }
+if (localStorage[storeName]) {
+	initialState = JSON.parse(localStorage[storeName]);
+}
 
 const middleware = [thunk];
 
@@ -19,8 +20,8 @@ const store = createStore(
 	)
 );
 
-// store.subscribe(() => {
-// 	localStorage['redux-dashboard'] = JSON.stringify(store.getState());
-// });
+store.subscribe(() => {
+	localStorage[storeName] = JSON.stringify(store.getState());
+});
 
 export default store;
