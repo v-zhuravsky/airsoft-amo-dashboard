@@ -20,7 +20,6 @@ const App = () => {
 	return (
 		<div>
 			<Switch>
-				<Route path="/login" component={Auth} />
 				<PrivateRoute exact path="/" component={Dashboard} />
 				<PrivateRoute path="/admins" component={Admins} />
 				<PrivateRoute path="/admin/:id" component={Admin} />
@@ -32,6 +31,7 @@ const App = () => {
 				<PrivateRoute path="/order/:id" component={Order} />
 				<PrivateRoute path="/settings" component={Settings} />
 				<PrivateRoute path="/stats" component={Stats} />
+				<Route path="/login" component={Auth} />
 				<PrivateRoute component={NotFound} />
 			</Switch>
 		</div>

@@ -1,4 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import useInput from '../hooks/useInput';
+import { connect } from 'react-redux';
+import { authAction } from '../actions/authAction';
+import { Redirect } from 'react-router-dom';
 
 import FlashMessagesList from './FlashMessagesList';
 import Container from './Container';
@@ -7,57 +11,64 @@ import Icon from './Icon';
 
 import '../styles/Auth.css';
 
-class Auth extends Component {
-	state = {
-		login: '',
-		password: ''
-	}
+const Auth = ({ admin, authAction }) => {
+	const login = useInput('');
+	const password = useInput('');
 
-	handleChange = e => {
-		this.setState({ [e.target.name]: e.target.value });
-	}
-
-	handleSubmit = e => {
+	const handleSubmit = e => {
 		e.preventDefault();
+
+		authAction({
+			login: login.value,
+			password: password.value
+		});
+	};
+
+	if (admin.accessToken !== undefined) {
+		if (admin.accessToken.length === 100) {
+			return <Redirect to="/" />
+		}
 	}
 
-	render() {
-		return (
-			<Container>
-				<Row>
-					<div className="col-md-4 col-md-offset-4">
-						<FlashMessagesList />
-						<div className="auth">
-							<div className="auth-header">
-								<h1>Admin panel</h1>
-							</div>
-							<form onSubmit={this.handleSubmit}>
-								<div className="input-group">
-									<p><Icon name="user" /></p>
-									<input
-										type="text"
-										name="login"
-										placeholder="Login"
-										required
-										onChange={this.handleChange} />
-								</div>
-								<div className="input-group">
-									<p><Icon name="lock" /></p>
-									<input
-										type="password"
-										name="password"
-										placeholder="Password"
-										required
-										onChange={this.handleChange} />
-								</div>
-								<button><Icon name="unlock" />Login</button>
-							</form>
+	return (
+		<Container>
+			<Row>
+				<div className="col-md-4 col-md-offset-4">
+					<FlashMessagesList />
+					<div className="auth">
+						<div className="auth-header">
+							<h1>Admin panel</h1>
 						</div>
+						<form onSubmit={handleSubmit}>
+							<div className="input-group">
+								<p><Icon name="user" /></p>
+								<input
+									type="text"
+									placeholder="Login"
+									{...login}
+									required />
+							</div>
+							<div className="input-group">
+								<p><Icon name="lock" /></p>
+								<input
+									type="password"
+									placeholder="Password"
+									{...password}
+									required />
+							</div>
+							<button><Icon name="unlock" />Login</button>
+						</form>
 					</div>
-				</Row>
-			</Container>
-		);
-	}
-}
+				</div>
+			</Row>
+		</Container>
+	);
+};
 
-export default Auth;
+const mapStateToProps = state => {
+	return {
+		admin: state.admin
+	};
+};
+
+export default connect(mapStateToProps, { authAction })(Auth);
