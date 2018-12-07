@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { logoutAction } from '../actions/logoutAction';
 import { NavLink } from 'react-router-dom';
 
 import Icon from './Icon';
@@ -7,7 +8,7 @@ import Img from './Img';
 
 import '../styles/Sidebar.css';
 
-const Sidebar = ({ admin, left }) => {
+const Sidebar = ({ admin, left, logoutAction }) => {
 	return (
 		<div style={{ left }} className="sidebar">
 			<div className="sidebar-header">
@@ -28,7 +29,7 @@ const Sidebar = ({ admin, left }) => {
 			<NavLink to="/customers"><Icon name="users" />Customers</NavLink>
 			<NavLink to="/stats"><Icon name="area-chart" />Stats</NavLink>
 			<NavLink to="/settings"><Icon name="cog" />Settings</NavLink>
-			<NavLink to="/logout"><Icon name="arrow-left" />Sign out</NavLink>
+			<a role="button" onClick={() => logoutAction(admin.accessToken)}><Icon name="arrow-left" />Sign out</a>
 		</div>
 	);
 };
@@ -40,4 +41,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps, { logoutAction })(Sidebar);
