@@ -1,8 +1,20 @@
 import {
 	ADD_FLASH_MESSAGE,
 	CHANGE_ADMIN_TYPE,
-	CHANGE_CURRENT_ADMIN_TYPE
+	CHANGE_CURRENT_ADMIN_TYPE,
+	FETCH_ADMINS
 } from './types';
+
+import fetchAdminsApi from '../api/fetchAdmins';
+
+export const fetchAdminsAction = accessToken => dispatch => {
+	fetchAdminsApi(accessToken).then(admins => {
+		dispatch({
+			type: FETCH_ADMINS,
+			payload: admins
+		});
+	}).catch(err => console.log(err));
+};
 
 export const changeAdminType = (id, newType, loggedInAdminId) => dispatch => {
 	console.log('changeAdminTypeAction');

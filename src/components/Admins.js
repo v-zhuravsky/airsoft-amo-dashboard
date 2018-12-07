@@ -1,6 +1,7 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchAdminsAction } from '../actions/adminsActions';
 
 import Sidebar from './Sidebar';
 import Content from './Content.js';
@@ -8,8 +9,15 @@ import ToggleSidebar from './ToggleSidebar';
 import AdminCard from './AdminCard';
 import FlashMessagesList from './FlashMessagesList';
 import Icon from './Icon';
+import Loader from './Loader';
 
-const Admins = ({ admins, currentAdminId }) => {
+const Admins = ({ admins, currentAdminId, token, fetchAdminsAction }) => {
+	useEffect(() => {
+		if (admins.length < 1) {
+			fetchAdminsAction(token);
+		}
+	});
+
 	return (
 		<div className="wrapper">
 			<Sidebar />
@@ -21,7 +29,17 @@ const Admins = ({ admins, currentAdminId }) => {
 				</div>
 				<FlashMessagesList />
 				{
-					admins.map(admin => <AdminCard admin={admin} currentAdminId={currentAdminId} key={admin.id} />)
+					admins.length < 1
+						? <Loader />
+						: (
+							admins.map(admin => 
+								<AdminCard
+									admin={admin}
+									currentAdminId={currentAdminId}
+									key={admin.id} 
+								/>
+							)
+						)
 				}
 			</Content>
 		</div>
@@ -31,8 +49,9 @@ const Admins = ({ admins, currentAdminId }) => {
 const mapStateToProps = state => {
 	return {
 		admins: state.admins,
-		currentAdminId: state.admin.id
+		currentAdminId: state.admin.id,
+		token: state.admin.accessToken
 	};
 };
 
-export default connect(mapStateToProps)(Admins);
+export default connect(mapStateToProps, { fetchAdminsAction })(Admins);

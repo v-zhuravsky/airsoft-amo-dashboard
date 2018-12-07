@@ -7,3 +7,4 @@ export const AUTHENTICATE = 'AUTHENTICATE';
 export const DEAUTHENTICATE = 'DEAUTHENTICATE';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_ORDERS = 'GET_ORDERS';
+export const FETCH_ADMINS = 'FETCH_ADMINS';
