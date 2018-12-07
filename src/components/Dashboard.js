@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { getProductsAction } from '../actions/productsActions';
 
 import Icon from './Icon';
 import Sidebar from './Sidebar';
@@ -9,7 +10,11 @@ import Products from './Products';
 import ToggleSidebar from './ToggleSidebar';
 import FlashMessagesList from './FlashMessagesList';
 
-const Dashboard = ({ products }) => {
+const Dashboard = ({ products, getProductsAction }) => {
+	if (products.length < 1) {
+		getProductsAction();
+	}
+
 	return (
 		<div className="wrapper">
 			<Sidebar />
@@ -32,4 +37,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, { getProductsAction })(Dashboard);

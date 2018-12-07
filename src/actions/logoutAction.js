@@ -2,7 +2,7 @@ import logoutApi from '../api/logout';
 import { DEAUTHENTICATE } from './types';
 
 export const logoutAction = accessToken => dispatch => {
-  logoutApi(accessToken).then(admin => {
+  logoutApi(accessToken).then(() => {
     dispatch({
       type: DEAUTHENTICATE
     });

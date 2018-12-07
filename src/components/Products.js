@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ContainerFluid from './ContainerFluid';
 import Row from './Row';
 import ProductItem from './ProductItem';
+import Loader from './Loader';
 
 import '../styles/Products.css';
 
@@ -76,6 +77,10 @@ class Products extends Component {
 				break;
 			default:
 				break;
+		}
+
+		if (products.length < 1) {
+			return <Loader />
 		}
 
 		return (
