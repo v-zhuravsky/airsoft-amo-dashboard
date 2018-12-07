@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apexcharts": "^2.2.4",
     "axios": "^0.18.0",
     "react": "^16.7.0-alpha.2",
+    "react-apexcharts": "^1.2.0",
     "react-dom": "^16.7.0-alpha.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
