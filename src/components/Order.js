@@ -13,12 +13,15 @@ import '../styles/Order.css';
 
 const Order = ({ order, products }) => {
 	let orderSum = 0;
-	if (products.length > 1) {
-		orderSum = products.reduce((current, next) => {
-			return (current.amount * Number(current.productPrice)) + (next.amount * Number(next.productPrice));
-		});
-	} else if (products.length === 1) {
+	if (products.length === 1) {
 		orderSum = products[0].amount * Number(products[0].productPrice);
+	} else if (products.length > 1) {
+		let prices = [];
+		for (let i = 0; i < products.length; i++) {
+			prices.push(products[i].amount * Number(products[i].productPrice));
+		}
+
+		orderSum = prices.reduce((prev, curr) => prev + curr);
 	}
 
 	return (
