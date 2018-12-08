@@ -11,6 +11,7 @@ import {
 import fetchAdminsApi from '../api/fetchAdmins';
 import changeAdminTypeApi from '../api/changeAdminType';
 import changeAdminNameApi from '../api/changeAdminName';
+import changeAdminPasswordApi from '../api/changeAdminPassword';
 
 export const fetchAdminsAction = accessToken => dispatch => {
 	dispatch({
@@ -64,6 +65,15 @@ export const changeAdminName = (token, id, newName, newSurname) => dispatch => {
 		dispatch({
 			type: ADD_FLASH_MESSAGE,
 			payload: { type: 'normal', text: 'Name changed successfuly'}
+		});
+	}).catch(err => console.log(err.response.data));
+};
+
+export const changeAdminPassword = (token, id, old, newP) => dispatch => {
+	changeAdminPasswordApi(token, id, old, newP).then(() => {
+		dispatch({
+			type: ADD_FLASH_MESSAGE,
+			payload: { type: 'normal', text: 'Password changed successfuly' }
 		});
 	}).catch(err => console.log(err.response.data));
 };

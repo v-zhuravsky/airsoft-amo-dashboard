@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeAdminName } from '../actions/adminsActions';
+import { changeAdminName, changeAdminPassword } from '../actions/adminsActions';
 
 import Sidebar from './Sidebar';
 import Content from './Content';
@@ -14,7 +14,7 @@ import ChangeAvatar from './ChangeAvatar';
 
 import '../styles/Settings.css';
 
-const Settings = ({ admin, changeAdminName }) => {
+const Settings = ({ admin, changeAdminName, changeAdminPassword }) => {
 	return (
 		<div className="wrapper">
 			<Sidebar />
@@ -37,7 +37,11 @@ const Settings = ({ admin, changeAdminName }) => {
 						</div>
 						<div className="col-md-6">
 							<ChangePassword
-								submit={(a, b, c) => alert(a + '\n' + b + '\n' + c)} />
+								submit={(a, b, c) => {
+									if (a === b) {
+										changeAdminPassword(admin.accessToken, admin.id, c, a);
+									}
+								}} />
 						</div>
 					</Row>
 				</ContainerFluid>				
@@ -52,4 +56,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { changeAdminName })(Settings);
+export default connect(mapStateToProps, { changeAdminName, changeAdminPassword })(Settings);
