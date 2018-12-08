@@ -1,6 +1,7 @@
 import React from 'react';
 import useInput from '../hooks/useInput';
 import { connect } from 'react-redux';
+import { updateProductAction } from '../actions/productsActions';
 
 import Icon from './Icon';
 import Sidebar from './Sidebar';
@@ -10,7 +11,7 @@ import FlashMessagesList from './FlashMessagesList';
 import ContainerFluid from './ContainerFluid';
 import Row from './Row';
 
-const UpdateProduct = ({ product }) => {
+const UpdateProduct = ({ product, token, updateProductAction }) => {
 	const productName = useInput(product.productName);
 	const category = useInput(product.category);
 	const productPrice = useInput(product.productPrice);
@@ -20,6 +21,16 @@ const UpdateProduct = ({ product }) => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+
+		updateProductAction(token, {
+			productId: product.productId,
+			productName: productName.value,
+			category: category.value,
+			productPrice: productPrice.value,
+			productDescription: productDescription.value,
+			amountLeft: amountLeft.value,
+			imgUrl: imgUrl.value				
+		});
 	};
 
 	return (
@@ -66,7 +77,7 @@ const UpdateProduct = ({ product }) => {
 										{...imgUrl}
 										placeholder="Url to product photo"
 										required />
-									<button type="submit"><Icon name="plus" />Add product</button>
+									<button type="submit"><Icon name="plus" />Update product</button>
 								</form>
 							</div>
 						</div>
@@ -77,6 +88,11 @@ const UpdateProduct = ({ product }) => {
 	);
 };
 
-const mapStateToProps = (state, ownProps) => ({ product: state.products.filter(product => product.productId === Number(ownProps.match.params.id))[0] });
+const mapStateToProps = (state, ownProps) => (
+	{
+		product: state.products.filter(product => product.productId === Number(ownProps.match.params.id))[0],
+		token: state.admin.accessToken
+	}
+);
 
-export default connect(mapStateToProps)(UpdateProduct);
+export default connect(mapStateToProps, { updateProductAction })(UpdateProduct);

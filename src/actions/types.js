@@ -8,3 +8,5 @@ export const DEAUTHENTICATE = 'DEAUTHENTICATE';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_ORDERS = 'GET_ORDERS';
 export const FETCH_ADMINS = 'FETCH_ADMINS';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';

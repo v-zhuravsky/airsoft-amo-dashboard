@@ -39,7 +39,7 @@ const Auth = ({ admin, authAction }) => {
 						<div className="auth-header">
 							<h1>Admin panel</h1>
 						</div>
-						<form onSubmit={handleSubmit}>
+						<form className="auth-f" onSubmit={handleSubmit}>
 							<div className="input-group">
 								<p><Icon name="user" /></p>
 								<input

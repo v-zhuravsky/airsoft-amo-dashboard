@@ -1,20 +1,39 @@
 import React from 'react';
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import Chart from 'react-apexcharts';
 
-const OrdersStats = ({ stats, width, height }) => {
+const OrdersStats = ({ stats }) => {
+	const categories = stats.map(cat => cat.name);
+	const data = stats.map(cat => cat.productsSold);
+
+	const config = {
+		options: {
+      chart: {
+        id: 'orders-stats-bar'
+      },
+      xaxis: {
+        categories: categories
+      },
+      title: {
+	      text: 'Sales by categories stats',
+	      style: {
+	        fontSize: '24px'
+	      }
+	    }
+    },
+    series: [
+      {
+        name: 'Total sales',
+        data: data
+      }
+    ]
+	};
+
 	return (
-		<BarChart
-			width={width}
-			height={height}
-			data={stats}
-		>
-			<CartesianGrid strokeDasharray="3 3" />
-			<XAxis dataKey="name" />
-			<YAxis />
-			<Tooltip />
-			<Legend />
-			<Bar dataKey="productsSold" fill="#2c3e50" />
-		</BarChart>
+		<Chart
+			options={config.options}
+      series={config.series}
+			type="bar"
+			height={300} />
 	);
 };
 

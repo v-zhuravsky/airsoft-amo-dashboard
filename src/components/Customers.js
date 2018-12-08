@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getOrdersAction } from '../actions/getOrdersAction';
 
@@ -10,9 +10,14 @@ import OrdersList from './OrdersList';
 import Loader from './Loader';
 
 const Customers = ({ orders, token, getOrdersAction }) => {
-	if (orders.length < 1) {
-		getOrdersAction(token);
-	}
+	useEffect(() => {
+		if (orders.length < 1) {
+			console.log('got there')
+			getOrdersAction(token);
+		}
+	}, [orders]);
+	// console.log('got there')
+	// getOrdersAction(token);
 
 	return (
 		<div className="wrapper">

@@ -12,10 +12,14 @@ import ToggleSidebar from './ToggleSidebar';
 import '../styles/Order.css';
 
 const Order = ({ order, products }) => {
-	const orderSum = products.reduce((current, next) => {
-		return (current.amount * Number(current.productPrice)) + (next.amount * Number(next.productPrice));
-	});
-	console.log(orderSum);
+	let orderSum = 0;
+	if (products.length > 1) {
+		orderSum = products.reduce((current, next) => {
+			return (current.amount * Number(current.productPrice)) + (next.amount * Number(next.productPrice));
+		});
+	} else if (products.length === 1) {
+		orderSum = products[0].amount * Number(products[0].productPrice);
+	}
 
 	return (
 		<div className="wrapper">

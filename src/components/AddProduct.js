@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addProductAction } from '../actions/productsActions';
 import useInput from '../hooks/useInput';
 
 import Sidebar from './Sidebar';
@@ -9,7 +11,7 @@ import FlashMessagesList from './FlashMessagesList';
 
 import '../styles/AddProduct.css';
 
-const AddProduct = () => {
+const AddProduct = ({ token, addProductAction }) => {
 	const productName = useInput('');
 	const category = useInput('');
 	const productPrice = useInput('');
@@ -19,6 +21,15 @@ const AddProduct = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+
+		addProductAction(token, {
+			productName: productName.value,
+			category: category.value,
+			productPrice: productPrice.value,
+			productDescription: productDescription.value,
+			amountLeft: amountLeft.value,
+			imgUrl: imgUrl.value				
+		});
 	};
 
 	return (
@@ -68,4 +79,10 @@ const AddProduct = () => {
 	);
 };
 
-export default AddProduct;
+const mapStateToProps = state => {
+	return {
+		token: state.admin.accessToken
+	};
+};
+
+export default connect(mapStateToProps, { addProductAction })(AddProduct);

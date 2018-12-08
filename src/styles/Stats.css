@@ -1,7 +1,15 @@
-.orders-stats {
-	overflow-x: scroll;
-	margin: 0 15px;
+.area {
+  overflow: hidden;
+  margin: 0 15px;
 }
-.orders-stats h2 {
-	margin-bottom: 15px;
+.area-chart {
+  width: calc(100% / 3);
+  background: #000;
+  float: left;
+  margin: 0;
+}
+.orders-stats {
+	margin: 15px;
+  max-height: 500px;
+  height: auto;
 }
