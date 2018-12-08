@@ -1,9 +1,12 @@
 import getProductsApi from '../api/getProducts';
 import addProductApi from '../api/addProduct';
 import updateProductApi from '../api/updateProduct';
-import { GET_PRODUCTS, ADD_PRODUCT, UPDATE_PRODUCT, ADD_FLASH_MESSAGE } from './types';
+import { GET_PRODUCTS, ADD_PRODUCT, UPDATE_PRODUCT, ADD_FLASH_MESSAGE, CLEAR_PRODUCTS } from './types';
 
 export const getProductsAction = () => dispatch => {
+  dispatch({
+    type: CLEAR_PRODUCTS
+  });
   getProductsApi().then(products => {
     dispatch({
       type: GET_PRODUCTS,

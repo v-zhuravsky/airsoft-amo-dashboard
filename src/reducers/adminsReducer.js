@@ -1,4 +1,4 @@
-import { CHANGE_ADMIN_TYPE, FETCH_ADMINS } from '../actions/types';
+import { CHANGE_ADMIN_TYPE, FETCH_ADMINS, CLEAR_ADMINS } from '../actions/types';
 
 // const initialState = [
 // 	{
@@ -83,6 +83,8 @@ const adminsReducer = (state = initialState, action) => {
 					return admin;
 				}
 			});
+		case CLEAR_ADMINS:
+			return [];
 		default:
 			return state;
 	}

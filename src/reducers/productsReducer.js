@@ -1,4 +1,4 @@
-import { GET_PRODUCTS, ADD_PRODUCT, UPDATE_PRODUCT } from '../actions/types';
+import { GET_PRODUCTS, ADD_PRODUCT, UPDATE_PRODUCT, CLEAR_PRODUCTS } from '../actions/types';
 const initialState = [];
 
 const productsReducer = (state = initialState, action) => {
@@ -19,6 +19,8 @@ const productsReducer = (state = initialState, action) => {
         return pr;
       });
       return updated;
+    case CLEAR_PRODUCTS:
+      return [];
     default:
       return state;
   }

@@ -10,3 +10,5 @@ export const GET_ORDERS = 'GET_ORDERS';
 export const FETCH_ADMINS = 'FETCH_ADMINS';
 export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
+export const CLEAR_ADMINS = 'CLEAR_ADMINS';
+export const CLEAR_PRODUCTS = 'CLEAR_PRODUCTS';

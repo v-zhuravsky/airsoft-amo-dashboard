@@ -1,22 +1,58 @@
 import React from 'react';
-import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import Chart from 'react-apexcharts';
 
-const YearActivity = ({ activity, width, height }) => {
-	return (
-		<BarChart
-			width={width}
-			height={height}
-			data={activity}
-		>
-			<CartesianGrid strokeDasharray="3 3" />
-			<XAxis dataKey="name" />
-			<YAxis />
-			<Tooltip />
-			<Legend />
-			<Bar dataKey="completed" fill="#2ecc71" />
-			<Bar dataKey="canceled" fill="#e74c3c" />
-		</BarChart>
-	);
+const YearActivity = ({ activity }) => {
+	const completed = activity.map(a => a.completed);
+	const canceled = activity.map(a => a.canceled);
+
+	const config = {
+		options: {
+      chart: {
+        id: 'orders-stats-bar',
+        stacked: true,
+        stackType: '100%'
+      },
+      colors: ['#007bff', '#F44336'],
+      plotOptions: {
+        bar: {
+          horizontal: true,
+          dataLabels: {
+            position: 'center'
+        	},
+      	}  
+      },
+      dataLabels: {
+      	formatter: (val, opt) => {
+      		return []
+      	}
+      },
+      xaxis: {
+        categories: activity.map(a => a.name)
+      },
+      title: {
+	      text: 'Year activity',
+	      style: {
+	        fontSize: '24px'
+	      }
+	    }
+    },
+    series: [
+      {
+      	name: 'Completed',
+      	data: completed
+      },
+      {
+      	name: 'Canceled',
+      	data: canceled
+      }
+    ]
+	};
+
+	return <Chart
+		options={config.options}
+    series={config.series}
+		type="bar"
+		height={700} />;
 };
 
 export default YearActivity;

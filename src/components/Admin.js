@@ -14,15 +14,13 @@ import YearActivity from './YearActivity';
 
 import '../styles/Admin.css';
 
-const Admin = ({ admin, currentAdminId, changeAdminType }) => {
+const Admin = ({ admin, currentAdminId, token, changeAdminType }) => {
 	const [type, setType] = useState(admin.type);
 
 	const handleChange = e => {
 		setType(e.target.value);
-		changeAdminType(admin.id, e.target.value, currentAdminId);
+		changeAdminType(token, admin.id, e.target.value, currentAdminId);
 	};
-
-	console.log(admin);
 
 	return (
 		<div className="wrapper">
@@ -59,11 +57,8 @@ const Admin = ({ admin, currentAdminId, changeAdminType }) => {
 						</div>
 						<div className="col-md-8 pl-n">
 							<div className="block activity-chart">
-								<h2>{admin.type} year activity</h2>
 								<YearActivity
-									activity={admin.adminMonthsActivity}
-									width={640}
-									height={350} />
+									activity={admin.adminMonthsActivity} />
 							</div>
 						</div>
 					</Row>
@@ -76,7 +71,8 @@ const Admin = ({ admin, currentAdminId, changeAdminType }) => {
 const mapStateToProps = (state, ownProps) => {
 	return {
 		admin: state.admins.filter(admin => admin.id === Number(ownProps.match.params.id))[0],
-		currentAdminId: state.admin.id
+		currentAdminId: state.admin.id,
+		token: state.admin.accessToken
 	};
 };
 
