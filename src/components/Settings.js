@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { changeAdminName } from '../actions/adminsActions';
 
 import Sidebar from './Sidebar';
 import Content from './Content';
@@ -13,7 +14,7 @@ import ChangeAvatar from './ChangeAvatar';
 
 import '../styles/Settings.css';
 
-const Settings = ({ admin }) => {
+const Settings = ({ admin, changeAdminName }) => {
 	return (
 		<div className="wrapper">
 			<Sidebar />
@@ -29,7 +30,7 @@ const Settings = ({ admin }) => {
 							<ChangeName
 								firstName={admin.firstName}
 								lastName={admin.lastName}
-								submit={(a, b) => alert(a + '\n' + b)} />
+								submit={(a, b) => changeAdminName(admin.accessToken, admin.id, a, b)} />
 							<ChangeAvatar
 								avatar={admin.avatar}
 								submit={a => alert(a)} />
@@ -51,4 +52,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps, { changeAdminName })(Settings);
