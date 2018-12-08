@@ -1,4 +1,4 @@
-import { CHANGE_ADMIN_TYPE, CHANGE_ADMIN_NAME, FETCH_ADMINS, CLEAR_ADMINS } from '../actions/types';
+import { CHANGE_ADMIN_TYPE, CHANGE_ADMIN_NAME, CHANGE_ADMIN_AVATAR, FETCH_ADMINS, CLEAR_ADMINS } from '../actions/types';
 
 const initialState = [];
 
@@ -23,6 +23,16 @@ const adminsReducer = (state = initialState, action) => {
 						...admin,
 						firstName: action.payload.firstName,
 						lastName: action.payload.lastName
+					};
+				}
+				return admin;
+			});
+		case CHANGE_ADMIN_AVATAR:
+			return state.map(admin => {
+				if (admin.id === action.payload.id) {
+					return {
+						...admin,
+						avatar: action.payload.avatar
 					};
 				}
 				return admin;

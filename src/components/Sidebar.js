@@ -1,22 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { logoutAction } from '../actions/logoutAction';
 import { NavLink } from 'react-router-dom';
 
 import Icon from './Icon';
-import Img from './Img';
 
 import '../styles/Sidebar.css';
 
 const Sidebar = ({ admin, left, logoutAction }) => {
+	const [avatar, setAvatar] = useState(admin.avatar);
+	useEffect(() => {
+		setAvatar(admin.avatar);
+	}, [admin, admin.avatar]);
+
 	return (
 		<div style={{ left }} className="sidebar">
 			<div className="sidebar-header">
 				<h2>AirsoftAmo</h2>
 			</div>
 			<div className="sidebar-user">
-				<Img
-					src={admin.avatar}
+				<img
+					src={avatar}
 					alt={`${admin.firstName} ${admin.lastName}`}
 					className="img-responsive img-circle" />
 				<div className="text">

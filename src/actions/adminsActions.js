@@ -4,6 +4,8 @@ import {
 	CHANGE_CURRENT_ADMIN_TYPE,
 	CHANGE_ADMIN_NAME,
 	CHANGE_CURRENT_ADMIN_NAME,
+	CHANGE_ADMIN_AVATAR,
+	CHANGE_CURRENT_ADMIN_AVATAR,
 	FETCH_ADMINS,
 	CLEAR_ADMINS
 } from './types';
@@ -12,6 +14,7 @@ import fetchAdminsApi from '../api/fetchAdmins';
 import changeAdminTypeApi from '../api/changeAdminType';
 import changeAdminNameApi from '../api/changeAdminName';
 import changeAdminPasswordApi from '../api/changeAdminPassword';
+import changeAdminAvatarApi from '../api/changeAvatar';
 
 export const fetchAdminsAction = accessToken => dispatch => {
 	dispatch({
@@ -74,6 +77,23 @@ export const changeAdminPassword = (token, id, old, newP) => dispatch => {
 		dispatch({
 			type: ADD_FLASH_MESSAGE,
 			payload: { type: 'normal', text: 'Password changed successfuly' }
+		});
+	}).catch(err => console.log(err.response.data));
+};
+
+export const changeAdminAvatar = (token, id, avatar) => dispatch => {
+	changeAdminAvatarApi(token, id, avatar).then(() => {
+		dispatch({
+			type: CHANGE_ADMIN_AVATAR,
+			payload: { id, avatar }
+		});
+		dispatch({
+			type: CHANGE_CURRENT_ADMIN_AVATAR,
+			payload: avatar
+		});
+		dispatch({
+			type: ADD_FLASH_MESSAGE,
+			payload: { type: 'normal', text: 'Avatar changed successfuly' }
 		});
 	}).catch(err => console.log(err.response.data));
 };
