@@ -1,1 +1,1 @@
-export default 'airsoft-shop-dashboard-dev-v0.3';
+export default 'airsoft-shop-dashboard-dev-v0.4';
