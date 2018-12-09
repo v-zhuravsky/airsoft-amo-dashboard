@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { getOrdersAction } from '../actions/getOrdersAction';
+import { getAllStocksAction } from '../actions/getAllStocksAction';
 
 import genAreaChartOptions from '../utils/generateAreaChartOptions';
 
+import Icon from './Icon';
+import Loader from './Loader';
 import Sidebar from './Sidebar';
 import Content from './Content.js';
 import ToggleSidebar from './ToggleSidebar';
@@ -13,15 +17,31 @@ import ShopVisitors from './ShopVisitors';
 
 import '../styles/Stats.css';
 
-const Stats = ({ stats }) => {
-	const dataOne = [101, 77, 46, 169, 128, 168, 110, 115, 51, 51, 231, 13, 151, 145, 164, 23, 137, 198, 206, 154, 192, 228, 33, 237, 224, 48, 44, 11, 286, 195];
-	const dataTwo = [36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94];
-	const dataThree = [108, 121, 72, 83, 138, 66, 113, 128, 50, 26, 2, 44, 43, 56, 75, 195, 125, 42, 113, 88, 202, 149, 188, 152, 3, 99, 123, 245, 12, 186];
-	const series = ['1/12/2018', '2/12/2018', '3/12/2018', '4/12/2018', '5/12/2018', '6/12/2018', '7/12/2018', '8/12/2018', '9/12/2018', '10/12/2018', '11/12/2018', '12/12/2018', '13/12/2018', '14/12/2018', '15/12/2018', '16/12/2018', '17/12/2018', '18/12/2018', '19/12/2018', '20/12/2018', '21/12/2018', '22/12/2018', '23/12/2018', '24/12/2018', '25/12/2018', '26/12/2018', '27/12/2018', '28/12/2018', '29/12/2018', '30/12/2018'];
+const Stats = ({ stats, stocks, orders, token, getOrdersAction, getAllStocksAction }) => {
+	const [countOne, setCountOne] = useState(0);
+	useEffect(() => {
+		if (orders.length < 1 && countOne !== 1) {
+			getOrdersAction(token);
+			setCountOne(1);
+		}
+	}, [orders]);
 
-	const salesThisMonth = genAreaChartOptions('$3936', 'Sales this month', dataOne, series);
-	const spendsThisMonth = genAreaChartOptions('$1950', 'Spends this month', dataTwo, series);
-	const newClientsThisMonth = genAreaChartOptions('$3047', 'New clients this month', dataThree, series);
+	const [countTwo, setCountTwo] = useState(0);
+	useEffect(() => {
+		if (!stocks.series && countTwo !== 1) {
+			getAllStocksAction(token);
+			setCountTwo(1);
+		}
+	}, [stocks]);
+
+	const sales = stocks.sales.data;
+	const spends = stocks.spends.data;
+	const newClients = stocks.newClients.data;
+	const series = stocks.series;
+
+	const salesThisMonth = genAreaChartOptions(`$${stocks.sales.totalValue}`, 'Sales this month', sales, series);
+	const spendsThisMonth = genAreaChartOptions(`$${stocks.spends.totalValue}`, 'Spends this month', spends, series);
+	const newClientsThisMonth = genAreaChartOptions(`$${stocks.newClients.totalValue}`, 'New clients this month', newClients, series);
 
 	return (
 		<div className="wrapper">
@@ -30,25 +50,35 @@ const Stats = ({ stats }) => {
 				<div className="page-header block">
 					<ToggleSidebar />
 					<h2>Stats</h2>
+					<a role="button" onClick={() => getAllStocksAction(token)}><Icon name="refresh" /> Update</a>
 				</div>
 				<FlashMessagesList />
-				<div className="area">
-					<div className="area-chart">
-						<AreaChart height={150} width="100%" options={salesThisMonth} />
-					</div>
-					<div className="area-chart">
-						<AreaChart height={150} width="100%" options={spendsThisMonth} />
-					</div>
-					<div className="area-chart">
-						<AreaChart height={150} width="100%" options={newClientsThisMonth} />
-					</div>
-				</div>
-				<div className="block orders-stats">
-					<ShopVisitors />
-				</div>
-				<div className="block orders-stats">
-					<OrdersStats stats={stats} />
-				</div>
+				{
+					(!stocks.series || stocks.series.length < 1)
+						? <Loader />
+						:
+						(
+							<>
+								<div className="area">
+									<div className="area-chart">
+										<AreaChart height={150} width="100%" options={salesThisMonth} />
+									</div>
+									<div className="area-chart">
+										<AreaChart height={150} width="100%" options={spendsThisMonth} />
+									</div>
+									<div className="area-chart">
+										<AreaChart height={150} width="100%" options={newClientsThisMonth} />
+									</div>
+								</div>
+								<div className="block orders-stats">
+									<ShopVisitors />
+								</div>
+								<div className="block orders-stats">
+									<OrdersStats stats={stats} />
+								</div>
+							</>
+						)
+					}
 			</Content>
 		</div>
 	);
@@ -56,8 +86,11 @@ const Stats = ({ stats }) => {
 
 const mapStateToProps = state => {
 	return {
-		stats: state.orders.stats
+		stats: state.orders.stats,
+		orders: state.orders.orders,
+		token: state.admin.accessToken,
+		stocks: state.stats.stocks
 	};
 };
 
-export default connect(mapStateToProps)(Stats);
+export default connect(mapStateToProps, { getOrdersAction, getAllStocksAction })(Stats);

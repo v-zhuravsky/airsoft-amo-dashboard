@@ -8,6 +8,7 @@ import adminReducer from './adminReducer';
 import adminsReducer from './adminsReducer';
 import uiReducer from './uiReducer';
 import ordersReducer from './ordersReducer';
+import statsReducer from './statsReducer';
 
 const appReducer = combineReducers({
 	products: productsReducer,
@@ -15,7 +16,8 @@ const appReducer = combineReducers({
 	admin: adminReducer,
 	admins: adminsReducer,
 	ui: uiReducer,
-	orders: ordersReducer
+	orders: ordersReducer,
+  stats: statsReducer
 });
 
 const rootReducer = (state, action) => {

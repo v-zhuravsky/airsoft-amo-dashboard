@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getOrdersAction } from '../actions/getOrdersAction';
 
+import Icon from './Icon';
 import Sidebar from './Sidebar';
 import Content from './Content.js';
 import ToggleSidebar from './ToggleSidebar';
@@ -12,12 +13,9 @@ import Loader from './Loader';
 const Customers = ({ orders, token, getOrdersAction }) => {
 	useEffect(() => {
 		if (orders.length < 1) {
-			console.log('got there')
 			getOrdersAction(token);
 		}
 	}, [orders]);
-	// console.log('got there')
-	// getOrdersAction(token);
 
 	return (
 		<div className="wrapper">
@@ -26,6 +24,7 @@ const Customers = ({ orders, token, getOrdersAction }) => {
 				<div className="page-header block">
 					<ToggleSidebar />
 					<h2>Customers</h2>
+					<a role="button" onClick={() => getOrdersAction(token)}><Icon name="refresh" /> Update</a>
 				</div>
 				<FlashMessagesList />
 				{ orders.length < 1 ? <Loader /> : <OrdersList orders={orders} /> }

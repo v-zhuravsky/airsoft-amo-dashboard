@@ -16,3 +16,5 @@ export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const CLEAR_ADMINS = 'CLEAR_ADMINS';
 export const CLEAR_PRODUCTS = 'CLEAR_PRODUCTS';
+export const GET_STOCKS = 'GET_STOCKS';
+export const CLEAR_STOCKS = 'CLEAR_STOCKS';
