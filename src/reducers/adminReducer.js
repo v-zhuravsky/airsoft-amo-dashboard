@@ -1,4 +1,11 @@
-import { CHANGE_CURRENT_ADMIN_TYPE, CHANGE_CURRENT_ADMIN_NAME, CHANGE_CURRENT_ADMIN_AVATAR, AUTHENTICATE, DEAUTHENTICATE } from '../actions/types';
+import {
+	CHANGE_CURRENT_ADMIN_TYPE,
+	CHANGE_CURRENT_ADMIN_NAME,
+	CHANGE_CURRENT_ADMIN_AVATAR,
+	AUTHENTICATE,
+	DEAUTHENTICATE,
+	UPDATE_ADMIN
+} from '../actions/types';
 
 const initialState = {};
 
@@ -8,6 +15,11 @@ const adminReducer = (state = initialState, action) => {
 			return action.payload;
 		case DEAUTHENTICATE:
 			return {};
+		case UPDATE_ADMIN:
+			return {
+				accessToken: state.accessToken,
+				...action.payload
+			};
 		case CHANGE_CURRENT_ADMIN_TYPE:
 			return {
 				...state,

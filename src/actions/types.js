@@ -18,3 +18,6 @@ export const CLEAR_ADMINS = 'CLEAR_ADMINS';
 export const CLEAR_PRODUCTS = 'CLEAR_PRODUCTS';
 export const GET_STOCKS = 'GET_STOCKS';
 export const CLEAR_STOCKS = 'CLEAR_STOCKS';
+export const COMPLETE_ORDER = 'COMPLETE_ORDER';
+export const CANCEL_ORDER = 'CANCEL_ORDER';
+export const UPDATE_ADMIN = 'UPDATE_ADMIN';

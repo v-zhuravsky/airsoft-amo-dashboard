@@ -8,6 +8,9 @@
 	overflow: hidden;
 	border-bottom: 1px solid #ccc;
 }
+.order-list-item.completed {
+	background: #ccc;
+}
 .order-list-item:last-child {
 	border-bottom: none;
 }
@@ -19,12 +22,18 @@
 	line-height: 34px;
 	font-size: 16px;
 }
+.order-list-item.completed a {
+	text-decoration: line-through;
+}
 .order-list-item a i {
 	margin: 0 10px;
 }
 .order-list-item .order-item-controls {
 	width: 78px;
 	float: right;
+}
+.order-list-item.completed .order-item-controls {
+	display: none;
 }
 .order-list-item .order-item-controls button {
 	float: left;
