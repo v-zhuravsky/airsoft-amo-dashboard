@@ -31,17 +31,17 @@ class Products extends Component {
 		const { sortType, products } = this.state;
 
 		const comparePriceLowHigh = (a, b) => {
-			if (a.productPrice < b.productPrice)
+			if (Number(a.productPrice) < Number(b.productPrice))
 				return -1;
-			if (a.productPrice > b.productPrice)
+			if (Number(a.productPrice) > Number(b.productPrice))
 				return 1;
 			return 0;
 		};
 
 		const comparePriceHighLow = (a, b) => {
-			if (a.productPrice < b.productPrice)
+			if (Number(a.productPrice) < Number(b.productPrice))
 				return 1;
-			if (a.productPrice > b.productPrice)
+			if (Number(a.productPrice) > Number(b.productPrice))
 				return -1;
 			return 0;
 		};
