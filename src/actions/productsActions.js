@@ -1,7 +1,8 @@
 import getProductsApi from '../api/getProducts';
 import addProductApi from '../api/addProduct';
 import updateProductApi from '../api/updateProduct';
-import { GET_PRODUCTS, ADD_PRODUCT, UPDATE_PRODUCT, ADD_FLASH_MESSAGE, CLEAR_PRODUCTS } from './types';
+import deleteProductApi from '../api/deleteProduct';
+import { GET_PRODUCTS, ADD_PRODUCT, DELETE_PRODUCT, UPDATE_PRODUCT, ADD_FLASH_MESSAGE, CLEAR_PRODUCTS } from './types';
 
 export const getProductsAction = () => dispatch => {
   dispatch({
@@ -46,4 +47,13 @@ export const updateProductAction = (token, product) => dispatch => {
       }
     });
   }).catch(err => console.log(err));
+};
+
+export const deleteProductAction = (token, id) => dispatch => {
+  deleteProductApi(token, id).then(() => {
+    dispatch({
+      type: DELETE_PRODUCT,
+      payload: id
+    });
+  }).catch(err => console.log(err.response.data));
 };
