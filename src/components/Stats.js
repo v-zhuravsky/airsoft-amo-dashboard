@@ -34,14 +34,25 @@ const Stats = ({ stats, stocks, orders, token, getOrdersAction, getAllStocksActi
 		}
 	}, [stocks]);
 
-	const sales = stocks.sales.data;
-	const spends = stocks.spends.data;
-	const newClients = stocks.newClients.data;
-	const series = stocks.series;
+	let sales = [];
+	let spends = [];
+	let newClients = [];
+	let series = [];
 
-	const salesThisMonth = genAreaChartOptions(`$${stocks.sales.totalValue}`, 'Sales this month', sales, series);
-	const spendsThisMonth = genAreaChartOptions(`$${stocks.spends.totalValue}`, 'Spends this month', spends, series);
-	const newClientsThisMonth = genAreaChartOptions(`$${stocks.newClients.totalValue}`, 'New clients this month', newClients, series);
+	let salesThisMonth = genAreaChartOptions(`$`, 'Sales this month', [], []);
+	let spendsThisMonth = genAreaChartOptions(`$`, 'Spends this month', [], []);
+	let newClientsThisMonth = genAreaChartOptions(`$`, 'New clients this month', [], []);
+
+	if (stocks.series !== undefined && stocks.series.length > 0) {
+		sales = stocks.sales.data;
+		spends = stocks.spends.data;
+		newClients = stocks.newClients.data;
+		series = stocks.series;
+
+		salesThisMonth = genAreaChartOptions(`$${stocks.sales.totalValue}`, 'Sales this month', sales, series);
+		spendsThisMonth = genAreaChartOptions(`$${stocks.spends.totalValue}`, 'Spends this month', spends, series);
+		newClientsThisMonth = genAreaChartOptions(`$${stocks.newClients.totalValue}`, 'New clients this month', newClients, series);
+	}
 
 	return (
 		<div className="wrapper">
