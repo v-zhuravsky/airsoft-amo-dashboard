@@ -4,7 +4,8 @@ import {
 	CHANGE_ADMIN_AVATAR,
 	FETCH_ADMINS,
 	CLEAR_ADMINS,
-	UPDATE_ADMIN
+	UPDATE_ADMIN,
+	CREATE_ADMIN
 } from '../actions/types';
 
 const initialState = [];
@@ -21,6 +22,11 @@ const adminsReducer = (state = initialState, action) => {
 					}
 					return admin;
 				})
+			];
+		case CREATE_ADMIN:
+			return [
+				...state,
+				action.payload
 			];
 		case CHANGE_ADMIN_TYPE:
 			return state.map(admin => {

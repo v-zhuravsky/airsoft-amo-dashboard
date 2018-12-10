@@ -22,3 +22,4 @@ export const CLEAR_STOCKS = 'CLEAR_STOCKS';
 export const COMPLETE_ORDER = 'COMPLETE_ORDER';
 export const CANCEL_ORDER = 'CANCEL_ORDER';
 export const UPDATE_ADMIN = 'UPDATE_ADMIN';
+export const CREATE_ADMIN = 'CREATE_ADMIN';

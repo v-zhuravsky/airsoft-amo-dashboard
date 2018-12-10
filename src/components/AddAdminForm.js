@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import useInput from '../hooks/useInput';
+import { connect } from 'react-redux';
+import { createAdminAction } from '../actions/adminsActions';
 
 import ContainerFluid from './ContainerFluid';
 import Row from './Row';
@@ -15,30 +17,58 @@ const selectStyles = {
 	marginBottom: '15px'
 };
 
-const AddAdminForm = () => {
-	const fullName = useInput('');
+const AddAdminForm = ({ token, createAdminAction }) => {
+	const firstName = useInput('');
+	const lastName = useInput('');
 	const login = useInput('');
 	const password = useInput('');
+	const avatar = useInput('');
 	const [type, setType] = useState('Administrator');
 
 	const handleSelectChange = e => setType(e.target.value);
+
+	const handleSubmit = e => {
+		e.preventDefault();
+
+		createAdminAction(token, {
+			firstName: firstName.value,
+			lastName: lastName.value,
+			login: login.value,
+			password: password.value,
+			avatar: avatar.value,
+			type
+		});
+	};
 
 	return (
 		<ContainerFluid>
 			<Row>
 				<div className="col-md-12">
-					<form className="block">
+					<form className="block" onSubmit={handleSubmit}>
 						<input 
 							type="text"
-							placeholder="Full name"
+							placeholder="First name"
+							{...firstName}
+							required />
+						<input 
+							type="text"
+							placeholder="Last name"
+							{...lastName}
 							required />
 						<input 
 							type="text"
 							placeholder="Login"
+							{...login}
 							required />
 						<input 
 							type="text"
 							placeholder="Password"
+							{...password}
+							required />
+						<input 
+							type="text"
+							placeholder="Avatar url"
+							{...avatar}
 							required />
 						<select style={selectStyles} value={type} onChange={handleSelectChange}>
 							<option value="Administrator">Administrator</option>
@@ -52,4 +82,10 @@ const AddAdminForm = () => {
 	);
 };
 
-export default AddAdminForm;
+const mapStateToProps = state => {
+	return {
+		token: state.admin.accessToken
+	};
+};
+
+export default connect(mapStateToProps, { createAdminAction })(AddAdminForm);
